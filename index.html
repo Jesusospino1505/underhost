@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+  <html lang="es">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/jpg" href="1743478149280.jpg">
+      <title>Feliz Cumpleaños</title>
+      <style>
+          body {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              background: linear-gradient(45deg, #ff0080, #ff8c00, #ff0, #0f0, #00f, #8000ff);
+              background-size: 400% 400%;
+              animation: gradientBG 10s ease infinite;
+              overflow: hidden;
+          }
+          @keyframes gradientBG {
+              0% { background-position: 0% 50%; }
+              50% { background-position: 100% 50%; }
+              100% { background-position: 0% 50%; }
+          }
+          .container {
+              text-align: center;
+              color: white;
+              font-size: 3rem;
+              font-family: Arial, sans-serif;
+              text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+              opacity: 0;
+              transform: translateY(-50px);
+              animation: fadeIn 2s ease-out forwards;
+          }
+          @keyframes fadeIn {
+              0% { opacity: 0; transform: translateY(-50px); }
+              100% { opacity: 1; transform: translateY(0); }
+          }
+          .vibrate {
+              display: inline-block;
+              animation: vibrate 0.3s infinite;
+          }
+          @keyframes vibrate {
+              0% { transform: translateX(0); }
+              25% { transform: translateX(-2px); }
+              50% { transform: translateX(2px); }
+              75% { transform: translateX(-2px); }
+              100% { transform: translateX(0); }
+          }
+          .confetti {
+              position: absolute;
+              width: 10px;
+              height: 10px;
+              background: rgba(255, 255, 255, 0.8);
+              opacity: 0.7;
+              animation: confetti-fall 4s linear infinite;
+          }
+          @keyframes confetti-fall {
+              0% { transform: translateY(-10vh) rotate(0deg); }
+              100% { transform: translateY(100vh) rotate(360deg); }
+          }
+      </style>
+  </head>
+  <body>
+      <div class="container">
+          <span class="vibrate">🎉</span> Feliz Cumpleaños, mi hermanito Kevin <span class="vibrate">🎉</span>
+      </div>
+  
+      <script>
+          function createConfetti() {
+              for (let i = 0; i < 50; i++) {
+                  let confetti = document.createElement("div");
+                  confetti.classList.add("confetti");
+                  document.body.appendChild(confetti);
+                  
+                  let colors = ["#ff0", "#ff5733", "#33ff57", "#3357ff", "#f333ff", "#33f3ff"];
+                  confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                  confetti.style.left = Math.random() * 100 + "vw";
+                  confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+              }
+          }
+          createConfetti();
+      </script>
+  </body>
+  </html>
